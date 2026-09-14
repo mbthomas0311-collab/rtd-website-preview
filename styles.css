@@ -125,9 +125,10 @@ p { margin: 0 0 1.1em; }
 /* endless aisle (projects page): JS masonry on a fine grid, aspect ratios preserved */
 .aisle-section { padding-top: clamp(24px, 4vw, 48px); }
 .aisle { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 8px; gap: 16px; }
-.aisle-item { display: block; overflow: hidden; background: var(--paper-tint); opacity: 0; transition: opacity .5s ease; }
+.aisle-item { display: block; overflow: hidden; background: transparent; opacity: 0; transition: opacity .5s ease; }
 .aisle-item.in { opacity: 1; }
-.aisle-item img { width: 100%; height: 100%; object-fit: cover; }
+.aisle-item img { width: 100%; height: auto; display: block; }
+.aisle-label { display: block; height: 26px; line-height: 26px; font-size: .7rem; letter-spacing: .04em; color: var(--ink-soft); font-family: ui-monospace, Consolas, monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .aisle-sentinel { height: 1px; }
 
 /* split sections */

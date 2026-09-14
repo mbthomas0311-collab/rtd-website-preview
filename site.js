@@ -50,6 +50,7 @@
     var step = parseInt(aisle.getAttribute('data-step'), 10) || 12;
     var cursor = 0;
     var ROW = 8;
+    var LABEL = 26;   // px reserved under each photo for its identifier label
 
     function gap() { return parseFloat(getComputedStyle(aisle).gap) || 16; }
     function colWidth() {
@@ -58,8 +59,8 @@
     }
     function sizeItem(el) {
       var w = +el.getAttribute('data-w'), h = +el.getAttribute('data-h');
-      var px = colWidth() * h / w;
-      el.style.gridRowEnd = 'span ' + Math.max(1, Math.round((px + gap()) / (ROW + gap())));
+      var px = colWidth() * h / w + LABEL;
+      el.style.gridRowEnd = 'span ' + Math.max(1, Math.ceil((px + gap()) / (ROW + gap())));
     }
     function sizeAll() { Array.prototype.forEach.call(aisle.children, sizeItem); }
 
@@ -70,7 +71,8 @@
         var a = document.createElement('a');
         a.className = 'aisle-item'; a.href = p.s; a.setAttribute('data-lightbox', '');
         a.setAttribute('data-w', p.w); a.setAttribute('data-h', p.h);
-        a.innerHTML = '<img src="' + p.s + '" alt="Robin Thomas Design project" loading="lazy">';
+        var label = p.s.split('/').pop().replace(/\.jpg$/i, '');
+        a.innerHTML = '<img src="' + p.s + '" alt="Robin Thomas Design project" loading="lazy" style="aspect-ratio:' + p.w + '/' + p.h + '"><span class="aisle-label">' + label + '</span>';
         aisle.appendChild(a);
         sizeItem(a);
         var img = a.querySelector('img');
