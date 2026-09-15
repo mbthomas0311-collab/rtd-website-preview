@@ -71,7 +71,7 @@
         var a = document.createElement('a');
         a.className = 'aisle-item'; a.href = p.s; a.setAttribute('data-lightbox', '');
         a.setAttribute('data-w', p.w); a.setAttribute('data-h', p.h);
-        var label = p.s.split('/').pop().replace(/\.jpg$/i, '');
+        var label = p.t || p.s.split('/').pop().replace(/\.jpg$/i, '');
         a.innerHTML = '<img src="' + p.s + '" alt="Robin Thomas Design project" loading="lazy" style="aspect-ratio:' + p.w + '/' + p.h + '"><span class="aisle-label">' + label + '</span>';
         aisle.appendChild(a);
         sizeItem(a);
