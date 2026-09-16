@@ -63,7 +63,7 @@ p { margin: 0 0 1.1em; }
 .site-header { text-align: center; padding: 26px var(--gutter) 0; border-bottom: 1px solid var(--line); background: #fff; }
 .lockup { display: inline-block; position: relative; margin-bottom: 14px; }
 .logo-design { height: 210px; width: auto; display: block; margin: -18px auto -10px; }
-.logo-gallery { position: absolute; right: 1%; bottom: 8%; height: 52px; width: auto; box-shadow: 0 1px 3px rgba(0,0,0,.18); }
+.logo-gallery { position: absolute; right: -9%; bottom: 0; height: 66px; width: auto; box-shadow: 0 1px 3px rgba(0,0,0,.18); }
 .site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: clamp(18px, 3vw, 42px); }
 .site-nav a {
   display: block; padding: 14px 0 16px; font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 400; color: var(--ink);
@@ -79,7 +79,7 @@ p { margin: 0 0 1.1em; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,30,45,.72) 0%, rgba(20,30,45,.25) 55%, rgba(20,30,45,0) 100%); }
 .hero-content { position: relative; z-index: 1; padding: 0 var(--gutter) clamp(40px, 6vw, 80px); max-width: 860px; margin: 0 auto; width: 100%; text-align: center; }
 .hero .eyebrow { color: #fff; opacity: .85; }
-.hero h1 { color: #fff; margin-bottom: .3em; }
+.hero h1 { color: #fff; margin-bottom: .3em; font-size: clamp(2.2rem, 4.3vw, 3.4rem); }
 .hero-sub { font-family: var(--display); font-size: 1.35rem; opacity: .95; }
 .hero .btn { background: #fff; color: var(--blue); border-color: #fff; }
 .hero .btn:hover { background: var(--paper-tint); }
@@ -227,7 +227,7 @@ p { margin: 0 0 1.1em; }
   body { font-size: 16px; }
   .topbar-contact .sep, .topbar-contact a:last-child { display: none; }
   .logo-design { height: 130px; margin: -10px auto -6px; }
-  .logo-gallery { height: 34px; }
+  .logo-gallery { height: 42px; }
   .lockup { margin-bottom: 8px; }
   .site-header { padding-top: 18px; position: relative; }
   .site-nav ul { display: none; flex-direction: column; gap: 0; padding-bottom: 12px; }
