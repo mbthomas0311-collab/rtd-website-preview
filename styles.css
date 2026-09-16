@@ -137,6 +137,9 @@ p { margin: 0 0 1.1em; }
 .split-img { position: relative; min-height: 440px; aspect-ratio: 5 / 4; max-height: 660px; }
 .split-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .split-text { align-self: center; }
+.split-inset { margin: 1.6em 0 0; max-width: 240px; }
+.split-inset img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; }
+.split-inset figcaption { font-size: .8rem; color: var(--ink-soft); font-style: italic; margin-top: .5em; }
 .split-text { padding: clamp(40px, 6vw, 96px) clamp(24px, 6vw, 96px); max-width: 640px; }
 .split-rev .split-img { order: 2; }
 .split-rev .split-text { justify-self: end; }
@@ -147,6 +150,8 @@ p { margin: 0 0 1.1em; }
 .hero-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; background: var(--paper-tint); }
 .hero-split .split-img { aspect-ratio: 0.71; max-height: 720px; min-height: 0; width: 100%; justify-self: center; }
 .hero-split .split-text { max-width: 600px; justify-self: end; }
+.hero-split h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); }
+@media (min-width: 900px) { .hero-split h1 { white-space: nowrap; } }
 @media (max-width: 720px) {
   .hero-split { grid-template-columns: 1fr; }
   .hero-split .split-img { aspect-ratio: 4 / 5; max-height: 70vh; order: -1; }
