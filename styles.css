@@ -150,7 +150,7 @@ p { margin: 0 0 1.1em; }
 .split-smaller .split-img { max-height: 620px; width: 88%; justify-self: center; align-self: center; }
 /* split hero: text beside an uncropped portrait image */
 .hero-split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; background: var(--paper-tint); }
-.hero-split .split-img { aspect-ratio: 0.71; max-height: 720px; min-height: 0; width: 100%; justify-self: center; }
+.hero-split .split-img { aspect-ratio: 3 / 4; max-height: 640px; min-height: 0; width: auto; height: 100%; max-width: 100%; justify-self: center; }
 .hero-split .split-text { max-width: 600px; justify-self: end; }
 .hero-split h1 { font-size: clamp(2rem, 3.4vw, 3.1rem); }
 @media (min-width: 900px) { .hero-split h1 { white-space: nowrap; } }
