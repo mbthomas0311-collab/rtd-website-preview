@@ -144,6 +144,8 @@ p { margin: 0 0 1.1em; }
 .split-rev .split-img { order: 2; }
 .split-rev .split-text { justify-self: end; }
 .split-tint { background: var(--paper-tint); }
+.split-fit .split-img { aspect-ratio: 4 / 3; min-height: 0; max-height: none; align-self: center; }
+.credit { font-size: .78rem; color: var(--ink-soft); font-style: italic; margin-top: 18px; text-align: right; }
 .split-tall .split-img { aspect-ratio: 4 / 5; max-height: 780px; }
 .split-smaller .split-img { max-height: 620px; width: 88%; justify-self: center; align-self: center; }
 /* split hero: text beside an uncropped portrait image */
