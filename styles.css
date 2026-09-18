@@ -292,3 +292,22 @@ p { margin: 0 0 1.1em; }
   .post-card { grid-template-columns: 1fr; }
   .post-body [data-gallery] { grid-template-columns: 1fr; }
 }
+
+/* contact (2026-09-18) */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(32px, 6vw, 80px); align-items: start; }
+.contact-info h2, .contact-form h2 { font-size: 1.6rem; margin: 0 0 .4em; }
+.contact-info h2:not(:first-child) { margin-top: 1.2em; }
+.contact-social { display: flex; gap: 14px; }
+.contact-social svg { width: 22px; height: 22px; fill: var(--blue); }
+.contact-form { background: var(--paper-tint); padding: clamp(24px, 4vw, 40px); display: grid; gap: 16px; }
+.contact-form label { display: grid; gap: 6px; font-size: .85rem; letter-spacing: .04em; color: var(--ink-soft); }
+.contact-form .optional { text-transform: none; }
+.contact-form input, .contact-form select, .contact-form textarea {
+  font: inherit; font-size: 1rem; color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 0; padding: 10px 12px; width: 100%;
+}
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; }
+.contact-form .btn { justify-self: start; cursor: pointer; border: 0; }
+.contact-form .hp { position: absolute; left: -9999px; }
+.contact-form .form-note { font-size: .8rem; font-style: italic; color: var(--ink-soft); margin: 0; }
+@media (max-width: 720px) { .contact-grid { grid-template-columns: 1fr; } }
