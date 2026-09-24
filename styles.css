@@ -234,6 +234,13 @@ p { margin: 0 0 1.1em; }
   .visit-grid { grid-template-columns: 1fr 1fr; }
   .masonry { columns: 2; }
 }
+/* Services splits, tablet to small laptop: the photo took its height from the text, and its 5:4 ratio then
+   pushed its width past half the page (crushed text, sideways scroll). Hold both columns at half instead. */
+@media (min-width: 721px) and (max-width: 1279px) {
+  .split:not(.split-fit):not(.split-tall):not(.hero-split) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .split:not(.split-fit):not(.split-tall):not(.hero-split) .split-img { aspect-ratio: auto; width: 100%; min-height: 360px; }
+  .split-rev:not(.split-fit):not(.split-tall):not(.hero-split) .split-text { justify-self: stretch; }
+}
 @media (max-width: 720px) {
   body { font-size: 16px; }
   .topbar-contact .sep, .topbar-contact a:last-child { display: none; }
