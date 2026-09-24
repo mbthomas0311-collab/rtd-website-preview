@@ -1,6 +1,7 @@
 // Robin Thomas Design & Gallery — preview site behaviour. No dependencies.
 (function () {
   var POOL = (window.RTD_PHOTOS || []).slice();
+  var LIVE = document.body.hasAttribute('data-live');   // production build: no review labels, working form
 
   function shuffle(a) {
     for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; }
@@ -50,7 +51,7 @@
     var step = parseInt(aisle.getAttribute('data-step'), 10) || 12;
     var cursor = 0;
     var ROW = 8;
-    var LABEL = 26;   // px reserved under each photo for its identifier label
+    var LABEL = LIVE ? 0 : 26;   // px reserved under each photo for its review label (preview only)
 
     function gap() { return parseFloat(getComputedStyle(aisle).gap) || 16; }
     function colWidth() {
@@ -71,8 +72,8 @@
         var a = document.createElement('a');
         a.className = 'aisle-item'; a.href = p.s; a.setAttribute('data-lightbox', '');
         a.setAttribute('data-w', p.w); a.setAttribute('data-h', p.h);
-        var label = p.t || p.s.split('/').pop().replace(/\.jpg$/i, '');
-        a.innerHTML = '<img src="' + p.s + '" alt="Robin Thomas Design project" loading="lazy" style="aspect-ratio:' + p.w + '/' + p.h + '"><span class="aisle-label">' + label + '</span>';
+        var label = LIVE ? '' : '<span class="aisle-label">' + (p.t || p.s.split('/').pop().replace(/\.jpg$/i, '')) + '</span>';
+        a.innerHTML = '<img src="' + p.s + '" alt="Robin Thomas Design project" loading="lazy" style="aspect-ratio:' + p.w + '/' + p.h + '">' + label;
         aisle.appendChild(a);
         sizeItem(a);
         var img = a.querySelector('img');
@@ -94,5 +95,28 @@
       addBatch(order.length);  // no observer support: show everything
     }
     var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(sizeAll, 120); });
+  }
+
+  // ---- Contact form: POST to the Worker (/api/contact), show the result in place ----
+  var form = document.querySelector('form[data-contact]');
+  if (form && LIVE) {
+    var note = form.querySelector('.form-note');
+    var btn = form.querySelector('button[type=submit]');
+    var FAIL = 'Sorry, the message could not be sent. Please call 312-573-7707.';
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      btn.disabled = true; note.textContent = 'Sending…';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+        .then(function (res) {
+          if (res.ok) {
+            form.innerHTML = '<h2>Thank you</h2><p>Your note is on its way to Robin, and she will be in touch soon.</p>';
+          } else {
+            note.textContent = res.error || FAIL; btn.disabled = false;
+            if (window.turnstile) window.turnstile.reset();
+          }
+        })
+        .catch(function () { note.textContent = FAIL; btn.disabled = false; });
+    });
   }
 })();
